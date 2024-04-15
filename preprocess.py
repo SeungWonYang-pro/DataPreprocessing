@@ -95,12 +95,11 @@ if __name__ == '__main__':
     
     os.mkdir(args.target_dir)
     categories_list = os.listdir(args.dataset_path)
-
     for category_dir in categories_list:
         category_root_path = os.path.join(args.dataset_path, category_dir)
+        category_train_path = os.path.join(category_root_path, 'train/data') #경로 오류 수정
 
-        category_train_path = os.path.join(category_root_path, '/train/data')
-        category_test_path = os.path.join(category_root_path, '/test_public/data')
+        category_test_path = os.path.join(category_root_path, 'test_public/data')
 
         category_target_path = os.path.join(args.target_dir, category_dir)
         os.mkdir(category_target_path)
@@ -130,7 +129,6 @@ if __name__ == '__main__':
         os.mkdir(category_target_test_bad_rgb_path)
         os.mkdir(category_target_test_bad_xyz_path)
         os.mkdir(category_target_test_bad_gt_path)
-
         category_train_files = os.listdir(category_train_path)
         num_train_files = len(category_train_files)//17
         for i in range(0, num_train_files):
